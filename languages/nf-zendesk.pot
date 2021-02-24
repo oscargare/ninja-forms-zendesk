@@ -1,0 +1,121 @@
+# Copyright (C) 2021 Oscar Gare
+# This file is distributed under the same license as the Ninja Forms - Zendesk plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ninja Forms - Zendesk 3.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ninja-forms-zendesk\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-02-24T11:10:11+00:00\n"
+"PO-Revision-Date: 2021-02-24T11:10:11+00:00\n"
+"X-Generator: WP-CLI 2.0.1\n"
+"X-Domain: nf-zendesk\n"
+
+#. Plugin Name of the plugin
+msgid "Ninja Forms - Zendesk"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://woocommerce.com/products/buy-one-get-one-free/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Create tickect on Zendesk with Ninja Forms."
+msgstr ""
+
+#. Author of the plugin
+msgid "Oscar Gare"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.linkedin.com/in/oscargare"
+msgstr ""
+
+#: includes/actions/class-nf-zendesk-action.php:57
+msgid "Zendesk"
+msgstr ""
+
+#: includes/actions/class-nf-zendesk-action.php:73
+msgid "The Zendesk subdomain has not been set!"
+msgstr ""
+
+#: includes/actions/class-nf-zendesk-action.php:126
+msgid "A new ticket could not be created at this time, please try again later."
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:15
+msgid "Zendesk subdomain"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:16
+msgid "Enter your Zendesk subdomain"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:24
+msgid "Ticket Subject"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:25
+msgid "Ticket subject or seach for a field"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:33
+msgid "Ticket Message"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:43
+msgid "Requester Name"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:44
+msgid "Requester name or search for a field"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:52
+msgid "Requester E-mail"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:53
+msgid "Requester email or search for a field"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:61
+msgid "Recipient e-mail address"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:62
+msgid "Ticket recipient or seach for a field"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:66
+msgid "The original recipient e-mail address of the request."
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:71
+msgid "Custom Fields"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:71
+msgid "Add New"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:78
+msgid "Field ID"
+msgstr ""
+
+#: includes/config/nf-zendesk-action.php:82
+msgid "Value"
+msgstr ""
+
+#. translators: HTML Tags.
+#: includes/class-nf-zendesk.php:64
+msgid "%1$sNinja Forms Zendesk extension%2$s requires the Ninja Form plugin to be activated to work."
+msgstr ""
+
+#. translators: HTML Tags.
+#: includes/class-nf-zendesk.php:70
+msgid "Ninja Forms Zendesk extension - The minimum Ninja Form version required for this plugin is %1$s. You are running %2$s."
+msgstr ""

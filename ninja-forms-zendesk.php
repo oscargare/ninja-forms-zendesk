@@ -8,7 +8,7 @@
  * Author URI: https://www.linkedin.com/in/oscargare
  * Developer: Oscar Gare
  * Developer URI: https://www.linkedin.com/in/oscargare
- * Text Domain: ninja-forms-zendesk
+ * Text Domain: nf-zendesk
  * Domain Path: /languages/
  *
  * Requires at least: 4.4
