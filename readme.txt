@@ -3,7 +3,7 @@ Contributors: oscargare
 Tags: forms, ninjaforms, nija forms, zendesk, zendesk ticket
 Requires at least: 5.4
 Tested up to: 5.6
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 Requires PHP: 5.6
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,11 @@ This section describes how to install the plugin and get it working.
 5. When you create a form, you can now add 'Zendesk' actions on the 'Emails & Actions' page.
 
 == Changelog ==
+
+= 3.1.1 (2021-03-12) =
+* Added: Allow setting the API credentials in the Zendesk action.
+* Added: "Zendesk Ticket ID" field type. This field is filled with the ticket ID after submitting it. Useful to use it in other actions.
+* Fixed: Display the "check environment" alerts.
 
 = 3.1.0 (2021-02-24) =
 * Initial release.
