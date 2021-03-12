@@ -67,11 +67,21 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 	 */
 	public function process( $action_settings, $form_id, $data ) {
 		$errors    = array();
-		$subdomain = $action_settings['zd_subdomain'];
+		$subdomain = sanitize_text_field( $action_settings['zd_subdomain'] );
+		$auth      = false;
 
 		if ( ! $subdomain ) {
 			$errors['zd_no_subdomain'] = esc_html__( 'The Zendesk subdomain has not been set!', 'nf-zendesk' );
+		} elseif ( empty( $action_settings['zd_anonymous'] ) && ( empty( $action_settings['zd_auth_user'] ) || empty( $action_settings['zd_auth_token'] ) ) ) {
+			$errors['zd_empty_auth'] = esc_html__( 'The Zendesk credentials has not been set!', 'nf-zendesk' );
 		} else {
+
+			if ( empty( $action_settings['zd_anonymous'] ) ) {
+				$auth = array(
+					'email_address' => sanitize_email( $action_settings['zd_auth_user'] ),
+					'api_token'     => sanitize_text_field( $action_settings['zd_auth_token'] ),
+				);
+			}
 
 			$ticket = array(
 				'subject'   => sanitize_text_field( $action_settings['zd_subject'] ),
@@ -106,13 +116,27 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 			$ticket = apply_filters( 'nf_zendesk_action_ticket_data', $ticket, $action_settings, $data );
 
 			// Create the ticket via API.
-			$client = new NF_Zendesk_API( $subdomain );
+			$client = new NF_Zendesk_API( $subdomain, $auth );
 			$result = $client->requests()->create( $ticket );
 
+			// Register errors.
 			if ( is_wp_error( $result ) ) {
 				$errors[ $result->get_error_code() ] = $result->get_error_message();
 			}
 
+			// Set the ticket ID.
+			if ( isset( $data['fields'] ) && is_array( $data['fields'] ) ) {
+				foreach ( $data['fields'] as $field_id => $field ) {
+					if ( isset( $field['type'] ) && 'zd_ticket_id' === $field['type'] ) {
+						$data['fields'][ $field_id ]['value'] = is_wp_error( $result ) ? 'Error: ' . $result->get_error_message() : $result->id;
+						break;
+					}
+				}
+			}
+
+			/**
+			 * Ticket created.
+			 */
 			do_action( 'nf_zendesk_action_ticket_created', $result, $action_settings, $data );
 		}
 

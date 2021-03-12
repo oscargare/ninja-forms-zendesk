@@ -67,6 +67,13 @@ class NF_Zendesk_Fields_Ticket_ID extends NF_Abstracts_Field {
 	 */
 	protected $_templates = 'hidden';
 
+	/**
+	 * Wrap template.
+	 *
+	 * @var string
+	 */
+	protected $_wrap_template = 'wrap-no-label';
+
 	// phpcs:enable
 
 	/**

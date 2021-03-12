@@ -102,11 +102,16 @@ class NF_Zendesk_API {
 			$response = $data;
 		} else {
 			$body = json_decode( $data['body'] );
-			if ( 201 != $data['response']['code'] ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
+			if ( ! in_array( intval( $data['response']['code'] ), array( 200, 201 ), true ) ) {
 				$error_message = isset( $body->error ) ? $body->error : $data['response']['message'];
 				$response      = new WP_Error( 'zd_api_error_' . $data['response']['code'], 'Zendesk API: ' . $error_message );
 			} else {
 				$response = $body;
+				if ( isset( $response->request ) ) {
+					$response = $response->request;
+				} elseif ( isset( $response->requests ) ) {
+					$response = $response->requests;
+				}
 			}
 		}
 
