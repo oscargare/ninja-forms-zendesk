@@ -33,6 +33,7 @@ class NF_Zendesk {
 	 */
 	public static function init() {
 		add_action( 'plugins_loaded', array( __CLASS__, 'init_plugin' ), 0 );
+		add_action( 'admin_notices', array( __CLASS__, 'display_notices' ) );
 	}
 
 	/**
@@ -47,7 +48,9 @@ class NF_Zendesk {
 
 		// Add hooks.
 		add_filter( 'ninja_forms_register_actions', array( __CLASS__, 'register_actions' ) );
+		add_filter( 'ninja_forms_register_fields', array( __CLASS__, 'register_fields' ) );
 		add_action( 'ninja_forms_builder_templates', array( __CLASS__, 'builder_templates' ) );
+		add_action( 'nf_admin_enqueue_scripts', array( __CLASS__, 'admin_enqueue_scripts' ) );
 	}
 
 	/**
@@ -75,6 +78,15 @@ class NF_Zendesk {
 	}
 
 	/**
+	 * Display admin notices
+	 */
+	public static function display_notices() {
+		foreach ( self::$admin_notices as $notice ) {
+			echo '<div id="message" class="error"><p>' . wp_kses_post( $notice ) . '</p></div>';
+		}
+	}
+
+	/**
 	 * Config
 	 *
 	 * @param string $file_name File name.
@@ -94,6 +106,7 @@ class NF_Zendesk {
 	 * Register the action.
 	 *
 	 * @param array $actions Array of actions.
+	 * @return array
 	 */
 	public static function register_actions( $actions ) {
 		$actions = is_array( $actions ) ? $actions : array();
@@ -104,9 +117,30 @@ class NF_Zendesk {
 	}
 
 	/**
+	 * Register field types.
+	 *
+	 * @param array $field_types Array of merge tags.
+	 * @return array
+	 */
+	public static function register_fields( $field_types ) {
+		$field_types = is_array( $field_types ) ? $field_types : array();
+
+		include_once dirname( __FILE__ ) . '/fields/class-nf-zendesk-fields-ticket-id.php';
+		$field_types['zd_ticket_id'] = new NF_Zendesk_Fields_Ticket_ID();
+		return $field_types;
+	}
+
+	/**
 	 * Output builder templates.
 	 */
 	public static function builder_templates() {
 		include_once dirname( __FILE__ ) . '/templates/nf-zendesk-custom-fields.html.php';
+	}
+
+	/**
+	 * Enqueue form builder scripts.
+	 */
+	public static function admin_enqueue_scripts() {
+		wp_enqueue_script( 'nf-zd-builder', plugins_url( 'assets/js/builder.js', NF_ZENDESK_FILE ), array(), '1', true );
 	}
 }
