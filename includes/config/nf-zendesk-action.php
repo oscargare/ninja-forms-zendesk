@@ -54,6 +54,31 @@ return array(
 		'width'          => 'one-half',
 		'use_merge_tags' => true,
 	),
+	'zd_anonymous'     => array(
+		'name'  => 'zd_anonymous',
+		'type'  => 'toggle',
+		'group' => 'advanced',
+		'label' => esc_html__( 'Create an anonymous ticket?', 'nf-zendesk' ),
+		'value' => 1,
+		'help'  => esc_html__( 'Create the ticket without credentials. Anonymous requests must first be enabled in your Zendesk account.', 'nf-zendesk' ),
+	),
+	'zd_auth_user'     => array(
+		'name'  => 'zd_auth_user',
+		'type'  => 'textbox',
+		'group' => 'advanced',
+		'label' => esc_html__( 'Zendesk user email', 'nf-zendesk' ),
+		'value' => '',
+		'width' => 'one-half',
+	),
+
+	'zd_auth_token'    => array(
+		'name'  => 'zd_auth_token',
+		'type'  => 'textbox',
+		'group' => 'advanced',
+		'label' => esc_html__( 'Zendesk API token', 'nf-zendesk' ),
+		'value' => '',
+		'width' => 'one-half',
+	),
 	'zd_recipient'     => array(
 		'name'           => 'zd_recipient',
 		'type'           => 'textbox',
