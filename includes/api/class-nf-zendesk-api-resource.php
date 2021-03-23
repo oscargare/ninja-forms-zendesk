@@ -63,6 +63,21 @@ class NF_Zendesk_API_Resource {
 	}
 
 	/**
+	 * Update a resource.
+	 *
+	 * @param array $data Resource data.
+	 * @return stdClass
+	 */
+	public function update( $data ) {
+		return $this->client->http_put(
+			$this->base . '.json',
+			array(
+				$this->name => $data,
+			)
+		);
+	}
+
+	/**
 	 * Return all resources.
 	 *
 	 * @param array $query Query params.

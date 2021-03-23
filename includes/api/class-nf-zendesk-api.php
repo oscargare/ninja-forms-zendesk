@@ -141,6 +141,34 @@ class NF_Zendesk_API {
 	}
 
 	/**
+	 * API POST/PUT
+	 *
+	 * POST or PUT request to the Zendesk API.
+	 *
+	 * @param string $endpoint API endpoint.
+	 * @param array  $post_data Associative array of data.
+	 * @param array  $extra_headers Extra headers.
+	 * @param string $method POST or PUT.
+	 */
+	protected function http_request( $endpoint, $post_data = null, $extra_headers = array(), $method = 'POST' ) {
+		$post_data  = wp_json_encode( $post_data );
+		$headers    = array_merge( $this->headers(), $extra_headers );
+		$target_url = trailingslashit( $this->api_url ) . $endpoint;
+		$method     = 'PUT' === strtoupper( $method ) ? 'PUT' : 'POST';
+		$result     = wp_remote_request(
+			$target_url,
+			array(
+				'redirection' => 0,
+				'headers'     => $headers,
+				'body'        => $post_data,
+				'method'      => $method,
+				'user-agent'  => self::USER_AGENT,
+			)
+		);
+		return $this->parse_response( $result );
+	}
+
+	/**
 	 * API POST
 	 *
 	 * Similar to the GET method, this function forms the request params as a POST request to the Zendesk API.
@@ -150,19 +178,20 @@ class NF_Zendesk_API {
 	 * @param array  $extra_headers Extra headers.
 	 */
 	public function http_post( $endpoint, $post_data = null, $extra_headers = array() ) {
-		$post_data  = wp_json_encode( $post_data );
-		$headers    = array_merge( $this->headers(), $extra_headers );
-		$target_url = trailingslashit( $this->api_url ) . $endpoint;
-		$result     = wp_remote_post(
-			$target_url,
-			array(
-				'redirection' => 0,
-				'headers'     => $headers,
-				'body'        => $post_data,
-				'user-agent'  => self::USER_AGENT,
-			)
-		);
-		return $this->parse_response( $result );
+		return $this->http_request( $endpoint, $post_data, $extra_headers );
+	}
+
+	/**
+	 * API PUT
+	 *
+	 * Similar to the GET method, this function forms the request params as a PUT request to the Zendesk API.
+	 *
+	 * @param string $endpoint API endpoint.
+	 * @param array  $post_data Associative array of data.
+	 * @param array  $extra_headers Extra headers.
+	 */
+	public function http_put( $endpoint, $post_data = null, $extra_headers = array() ) {
+		return $this->http_request( $endpoint, $post_data, $extra_headers, 'PUT' );
 	}
 
 	/**
