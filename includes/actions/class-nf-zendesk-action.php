@@ -86,7 +86,7 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 			$ticket = array(
 				'subject'   => sanitize_text_field( $action_settings['zd_subject'] ),
 				'comment'   => array(
-					'html_body' => wp_kses_post( $action_settings['zd_body'] ),
+					'html_body' => wpautop( sanitize_textarea_field( $action_settings['zd_body'] ) ),
 				),
 				'requester' => array(
 					'name'  => sanitize_text_field( $action_settings['zd_name'] ),
@@ -105,7 +105,7 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 
 					$ticket['custom_fields'][] = array(
 						'id'    => $custom_field['field_id'],
-						'value' => $custom_field['value'],
+						'value' => sanitize_text_field( $custom_field['value'] ),
 					);
 				}
 			}
@@ -137,7 +137,7 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 			/**
 			 * Ticket created.
 			 */
-			do_action( 'nf_zendesk_action_ticket_created', $result, $action_settings, $data );
+			do_action( 'nf_zendesk_action_ticket_created', $result, $action_settings, $data, $client );
 		}
 
 		if ( count( $errors ) ) {
