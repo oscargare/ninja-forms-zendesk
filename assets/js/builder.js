@@ -4,7 +4,7 @@
 
 	var toggleFields = function() {
 		if ( $('#zd_anonymous').length ) {
-			['#zd_auth_user', '#zd_auth_token'].forEach( el => $(el).closest('.nf-setting').toggle( ! $('#zd_anonymous').prop('checked') ) );
+			['#zd_auth_user', '#zd_auth_token'].forEach( function( el ) { $(el).closest('.nf-setting').toggle( ! $('#zd_anonymous').prop('checked') ); } );
 		}
 	}
 
