@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Ninja Forms - Zendesk
  * Plugin URI: https://woocommerce.com/products/buy-one-get-one-free/
- * Description: Create tickect on Zendesk with Ninja Forms.
+ * Description: Create tickets on Zendesk with Ninja Forms.
  * Version: 3.1.1
  * Author: Oscar Gare
  * Author URI: https://www.linkedin.com/in/oscargare
