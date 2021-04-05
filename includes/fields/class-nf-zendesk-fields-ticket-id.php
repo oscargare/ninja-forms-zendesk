@@ -82,7 +82,7 @@ class NF_Zendesk_Fields_Ticket_ID extends NF_Abstracts_Field {
 	public function __construct() {
 		parent::__construct();
 
-		$this->_nicename = esc_html__( 'Zendesk ticket ID', 'nf-zendesk' );
+		$this->_nicename = esc_html__( 'Zendesk ticket ID', 'ninja-forms-zendesk' );
 	}
 
 }

@@ -62,7 +62,7 @@ class NF_Zendesk_API {
 				)
 			);
 
-			$this->auth = base64_encode( $auth['email_address'] . '/token:' . $auth['api_token'] );
+			$this->auth = base64_encode( $auth['email_address'] . '/token:' . $auth['api_token'] ); // phpcs:ignore WordPress
 		}
 	}
 

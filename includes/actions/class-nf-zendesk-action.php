@@ -54,7 +54,7 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 
 		$settings = NF_Zendesk::config( 'zendesk_action' );
 
-		$this->_nicename = __( 'Zendesk', 'nf-zendesk' );
+		$this->_nicename = __( 'Zendesk', 'ninja-forms-zendesk' );
 		$this->_settings = array_merge( $this->_settings, $settings );
 	}
 
@@ -71,9 +71,9 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 		$auth      = false;
 
 		if ( ! $subdomain ) {
-			$errors['zd_no_subdomain'] = esc_html__( 'The Zendesk subdomain has not been set!', 'nf-zendesk' );
+			$errors['zd_no_subdomain'] = esc_html__( 'The Zendesk subdomain has not been set!', 'ninja-forms-zendesk' );
 		} elseif ( empty( $action_settings['zd_anonymous'] ) && ( empty( $action_settings['zd_auth_user'] ) || empty( $action_settings['zd_auth_token'] ) ) ) {
-			$errors['zd_empty_auth'] = esc_html__( 'The Zendesk credentials has not been set!', 'nf-zendesk' );
+			$errors['zd_empty_auth'] = esc_html__( 'The Zendesk credentials has not been set!', 'ninja-forms-zendesk' );
 		} else {
 
 			if ( empty( $action_settings['zd_anonymous'] ) ) {
@@ -147,7 +147,7 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 			if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
 				$data['errors']['form'] += $errors;
 			} else {
-				$data['errors']['form']['zd_user_error'] = __( 'A new ticket could not be created at this time, please try again later.', 'nf-zendesk' );
+				$data['errors']['form']['zd_user_error'] = __( 'A new ticket could not be created at this time, please try again later.', 'ninja-forms-zendesk' );
 			}
 		}
 

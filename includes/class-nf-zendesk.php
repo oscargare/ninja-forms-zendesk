@@ -64,13 +64,13 @@ class NF_Zendesk {
 
 		if ( ! class_exists( 'Ninja_Forms' ) ) {
 			// translators: HTML Tags.
-			self::$admin_notices[] = sprintf( __( '%1$sNinja Forms Zendesk extension%2$s requires the Ninja Form plugin to be activated to work.', 'nf-zendesk' ), '<strong>', '</strong>' );
+			self::$admin_notices[] = sprintf( __( '%1$sNinja Forms Zendesk extension%2$s requires the Ninja Form plugin to be activated to work.', 'ninja-forms-zendesk' ), '<strong>', '</strong>' );
 			return false;
 		}
 
 		if ( version_compare( Ninja_Forms::VERSION, '3.0', '<' ) ) {
 			// translators: HTML Tags.
-			self::$admin_notices[] = sprintf( __( 'Ninja Forms Zendesk extension - The minimum Ninja Form version required for this plugin is %1$s. You are running %2$s.', 'nf-zendesk' ), '3.0', Ninja_Forms::VERSION );
+			self::$admin_notices[] = sprintf( __( 'Ninja Forms Zendesk extension - The minimum Ninja Form version required for this plugin is %1$s. You are running %2$s.', 'ninja-forms-zendesk' ), '3.0', Ninja_Forms::VERSION );
 			return false;
 		}
 
