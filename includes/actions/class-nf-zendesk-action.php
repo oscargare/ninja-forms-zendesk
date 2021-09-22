@@ -115,6 +115,9 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 			 */
 			$ticket = apply_filters( 'nf_zendesk_action_ticket_data', $ticket, $action_settings, $data );
 
+			// Make clickable the URLs before create the ticket.
+			$ticket['comment']['html_body'] = make_clickable( $ticket['comment']['html_body'] );
+
 			// Create the ticket via API.
 			$client = new NF_Zendesk_API( $subdomain, $auth );
 			$result = $client->requests()->create( $ticket );
