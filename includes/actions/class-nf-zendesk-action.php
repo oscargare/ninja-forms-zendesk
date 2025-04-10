@@ -50,8 +50,6 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 	 * Constructor
 	 */
 	public function __construct() {
-		parent::__construct();
-
 		$settings = NF_Zendesk::config( 'zendesk_action' );
 
 		$this->_nicename = __( 'Zendesk', 'ninja-forms-zendesk' );

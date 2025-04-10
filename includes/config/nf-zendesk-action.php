@@ -8,6 +8,21 @@
 defined( 'ABSPATH' ) || exit;
 
 return array(
+	'label'            => array(
+		'name'        => 'label',
+		'type'        => 'textbox',
+		'group'       => 'primary',
+		'label'       => esc_html__( 'Action Name', 'ninja-forms-zendesk' ),
+		'placeholder' => '',
+		'width'       => 'full',
+		'value'       => '',
+	),
+	'active'           => array(
+		'name'  => 'active',
+		'type'  => 'toggle',
+		'label' => esc_html__( 'Active', 'ninja-forms-zendesk' ),
+		'value' => 1,
+	),
 	'zd_subdomain'     => array(
 		'name'           => 'zd_subdomain',
 		'type'           => 'textbox',

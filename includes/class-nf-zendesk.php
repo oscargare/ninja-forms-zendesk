@@ -49,6 +49,7 @@ class NF_Zendesk {
 		// Add hooks.
 		add_filter( 'ninja_forms_register_actions', array( __CLASS__, 'register_actions' ) );
 		add_filter( 'ninja_forms_register_fields', array( __CLASS__, 'register_fields' ) );
+		add_filter( 'ninja_forms_run_action_settings', array( __CLASS__, 'run_action_settings' ), -1 );
 		add_action( 'ninja_forms_builder_templates', array( __CLASS__, 'builder_templates' ) );
 		add_action( 'nf_admin_enqueue_scripts', array( __CLASS__, 'admin_enqueue_scripts' ) );
 	}
@@ -128,6 +129,18 @@ class NF_Zendesk {
 		include_once dirname( __FILE__ ) . '/fields/class-nf-zendesk-fields-ticket-id.php';
 		$field_types['zd_ticket_id'] = new NF_Zendesk_Fields_Ticket_ID();
 		return $field_types;
+	}
+
+	/**
+	 * Fix undefined index on form submission.
+	 *
+	 * @param array $subject Action settings.
+	 */
+	public static function run_action_settings( $subject ) {
+		if ( is_array( $subject ) && isset( $subject['objectType'], $subject['type'] ) && 'zendesk' === $subject['type'] && 'Action' === $subject['objectType'] ) {
+			unset( $subject['payment_total'] );
+		}
+		return $subject;
 	}
 
 	/**
