@@ -92,6 +92,10 @@ final class NF_Zendesk_Action extends NF_Abstracts_Action {
 				),
 			);
 
+			if ( ! empty( $action_settings['zd_priority'] ) && in_array( $action_settings['zd_priority'], [ 'urgent', 'high', 'normal', 'low' ], true ) ) {
+				$ticket['priority'] = $action_settings['zd_priority'];
+			}
+
 			if ( $action_settings['zd_recipient'] ) {
 				$ticket['recipient'] = sanitize_email( $action_settings['zd_recipient'] );
 			}

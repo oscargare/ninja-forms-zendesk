@@ -69,6 +69,36 @@ return array(
 		'width'          => 'one-half',
 		'use_merge_tags' => true,
 	),
+	'zd_priority'      => array(
+		'name'    => 'zd_priority',
+		'type'    => 'select',
+		'group'   => 'primary',
+		'label'   => esc_html__( 'Priority', 'ninja-forms-zendesk' ),
+		'help'    => esc_html__( 'The urgency with which the ticket should be addressed.', 'ninja-forms-zendesk' ),
+		'options' => [
+			[
+				'value' => '',
+				'label' => esc_html__( 'Unset', 'ninja-forms-zendesk' ),
+			],
+			[
+				'value' => 'urgent',
+				'label' => esc_html__( 'Urgent', 'ninja-forms-zendesk' ),
+			],
+			[
+				'value' => 'high',
+				'label' => esc_html__( 'High', 'ninja-forms-zendesk' ),
+			],
+			[
+				'value' => 'normal',
+				'label' => esc_html__( 'Normal', 'ninja-forms-zendesk' ),
+			],
+			[
+				'value' => 'low',
+				'label' => esc_html__( 'Low', 'ninja-forms-zendesk' ),
+			],
+		],
+		'width'   => 'full',
+	),
 	'zd_anonymous'     => array(
 		'name'  => 'zd_anonymous',
 		'type'  => 'toggle',
