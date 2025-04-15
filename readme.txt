@@ -3,7 +3,7 @@ Contributors: oscargare
 Tags: forms, ninjaforms, nija forms, zendesk, zendesk ticket
 Requires at least: 5.4
 Tested up to: 5.6
-Stable tag: 3.1.2
+Stable tag: 3.1.3
 Requires PHP: 5.6
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,12 @@ This section describes how to install the plugin and get it working.
 5. When you create a form, you can now add 'Zendesk' actions on the 'Emails & Actions' page.
 
 == Changelog ==
+
+= 3.1.3 (2025-04-15) =
+* Added: Allow setting the ticket priority.
+
+= 3.1.2 (2025-04-10) =
+* Fixed: Bug introduced by NinjaForms.
 
 = 3.1.1 (2021-03-12) =
 * Added: Allow setting the API credentials in the Zendesk action.

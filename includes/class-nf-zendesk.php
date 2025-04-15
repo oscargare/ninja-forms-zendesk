@@ -17,7 +17,7 @@ class NF_Zendesk {
 	 *
 	 * @var string
 	 */
-	public static $version = '3.1.2';
+	public static $version = '3.1.3';
 
 	/**
 	 * Admin notices.
